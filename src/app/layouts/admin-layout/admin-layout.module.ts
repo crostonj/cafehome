@@ -1,3 +1,5 @@
+import { DashboardComponent } from './../../dashboard/dashboard.component';
+import { TableListComponent } from './../../table-list/table-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -14,7 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   imports: [
     CommonModule,
-    //RouterModule.forChild(AdminLayoutRoutes),
+    RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -26,6 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   declarations: [
     UserProfileComponent,
+    DashboardComponent,
+    TableListComponent
   ]
 })
 

@@ -10,6 +10,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AppRoutingModule } from './app.routing';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRippleModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSelectModule} from '@angular/material/select';
+import { AdminLayoutRoutes } from './layouts/admin-layout/admin-layout.routing';
+import { TableListComponent } from './table-list/table-list.component';
 
 
 @NgModule({
@@ -24,10 +32,16 @@ import { AppRoutingModule } from './app.routing';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule,
+    RouterModule.forChild(AdminLayoutRoutes),
     AppRoutingModule,
     BrowserAnimationsModule,
     ComponentsModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
 
   ],
   providers: [],

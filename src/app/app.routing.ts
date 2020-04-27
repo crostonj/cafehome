@@ -7,15 +7,19 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
+ {
+  path: '',
+  redirectTo: 'dashboard',
+  pathMatch: 'full',
+},
   {
     path: '',
     component: AdminLayoutComponent,
-/*    children: [{
+    children: [{
       path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
-  */
-   },
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

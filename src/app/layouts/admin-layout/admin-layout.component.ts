@@ -13,7 +13,7 @@ import * as $ from 'jquery';
   styleUrls: ['./admin-layout.component.scss']
 })
 export class AdminLayoutComponent implements OnInit {
-  private _router: Subscription;
+  private myRouter: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
 
@@ -37,11 +37,11 @@ export class AdminLayoutComponent implements OnInit {
       });
       this.router.events.subscribe((event: any) => {
           if (event instanceof NavigationStart) {
-             if (event.url != this.lastPoppedUrl) {
+             if (event.url !== this.lastPoppedUrl) {
                  this.yScrollStack.push(window.scrollY);
              }
          } else if (event instanceof NavigationEnd) {
-             if (event.url == this.lastPoppedUrl) {
+             if (event.url === this.lastPoppedUrl) {
                  this.lastPoppedUrl = undefined;
                  window.scrollTo(0, this.yScrollStack.pop());
              } else {
@@ -49,7 +49,7 @@ export class AdminLayoutComponent implements OnInit {
              }
          }
       });
-      this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+      this.myRouter = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
            elemMainPanel.scrollTop = 0;
            elemSidebar.scrollTop = 0;
       });
@@ -59,13 +59,13 @@ export class AdminLayoutComponent implements OnInit {
       }
 
       const windowWidth = $(window).width();
-      let $sidebar = $('.sidebar');
-      let $sidebar_responsive = $('body > .navbar-collapse');
-      let $sidebar_img_container = $sidebar.find('.sidebar-background');
+      const $sidebar = $('.sidebar');
+      const $sidebarResponsive = $('body > .navbar-collapse');
+      const $sidebarImgContainer = $sidebar.find('.sidebar-background');
 
 
-      if(windowWidth > 767){
-          if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
+      if (windowWidth > 767){
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
               $('.fixed-plugin .dropdown').addClass('open');
           }
 
@@ -73,70 +73,70 @@ export class AdminLayoutComponent implements OnInit {
 
       $('.fixed-plugin a').click(function(event){
         // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if($(this).hasClass('switch-trigger')){
-              if(event.stopPropagation){
+          if ($(this).hasClass('switch-trigger')){
+              if (event.stopPropagation){
                   event.stopPropagation();
               }
-              else if(window.event){
+              else if (window.event){
                  window.event.cancelBubble = true;
               }
           }
       });
 
       $('.fixed-plugin .badge').click(function(){
-          let $full_page_background = $('.full-page-background');
-
 
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
 
-          var new_color = $(this).data('color');
+          const newColor = $(this).data('color');
 
-          if($sidebar.length !== 0){
-              $sidebar.attr('data-color', new_color);
+          if ($sidebar.length !== 0){
+              $sidebar.attr('data-color', newColor);
           }
 
-          if($sidebar_responsive.length != 0){
-              $sidebar_responsive.attr('data-color',new_color);
+          if ($sidebarResponsive.length !== 0){
+              $sidebarResponsive.attr('data-color', newColor);
           }
       });
 
       $('.fixed-plugin .img-holder').click(function(){
-          let $full_page_background = $('.full-page-background');
+          const $fullPageBackground = $('.full-page-background');
 
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
 
 
-          var new_image = $(this).find("img").attr('src');
+          const newImage = $(this).find('img').attr('src');
 
-          if($sidebar_img_container.length !=0 ){
-              $sidebar_img_container.fadeOut('fast', function(){
-                 $sidebar_img_container.css('background-image','url("' + new_image + '")');
-                 $sidebar_img_container.fadeIn('fast');
+          if ($sidebarImgContainer.length !== 0 ){
+              $sidebarImgContainer.fadeOut('fast', () => {
+                 $sidebarImgContainer.css('background-image', 'url("' + newImage + '")');
+                 $sidebarImgContainer.fadeIn('fast');
               });
           }
 
-          if($full_page_background.length != 0){
+          if ($fullPageBackground.length !== 0){
 
-              $full_page_background.fadeOut('fast', function(){
-                 $full_page_background.css('background-image','url("' + new_image + '")');
-                 $full_page_background.fadeIn('fast');
+              $fullPageBackground.fadeOut('fast', () => {
+                 $fullPageBackground.css('background-image', 'url("' + newImage + '")');
+                 $fullPageBackground.fadeIn('fast');
               });
           }
 
-          if($sidebar_responsive.length != 0){
-              $sidebar_responsive.css('background-image','url("' + new_image + '")');
+          if ($sidebarResponsive.length !== 0){
+              $sidebarResponsive.css('background-image', 'url("' + newImage + '")');
           }
       });
   }
+
   ngAfterViewInit() {
       this.runOnRouteChange();
   }
+
   isMaps(path){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+      let titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
-      if(path == titlee){
+      if (path === titlee){
           return false;
       }
       else {
@@ -145,7 +145,7 @@ export class AdminLayoutComponent implements OnInit {
   }
   runOnRouteChange(): void {
     if (window.matchMedia(`(min-width: 960px)`).matches && !this.isMac()) {
-      const elemMainPanel = <HTMLElement>document.querySelector('.main-panel');
+      const elemMainPanel = document.querySelector('.main-panel') as HTMLElement;
       const ps = new PerfectScrollbar(elemMainPanel);
       ps.update();
     }
