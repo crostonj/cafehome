@@ -18,13 +18,18 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { AdminLayoutRoutes } from './layouts/admin-layout/admin-layout.routing';
 import { TableListComponent } from './table-list/table-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationServiceService } from './Services/authentication-service.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +47,12 @@ import { TableListComponent } from './table-list/table-list.component';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDialogModule
 
   ],
-  providers: [],
+  providers: [
+    AuthenticationServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
