@@ -23,7 +23,21 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (response) => {
           if (response.token != null){
-            this.routes.navigate(['/dashboard']);
+            this.routes.navigate(['/']);
+
+          }
+          else{
+            this.msg = 'Invalid username or password';
+                }
+          });
+    }
+
+    register(username: string, password: string): void{
+      this.userService.register(username, password)
+      .subscribe(
+        (response) => {
+          if (response.token != null){
+            this.routes.navigate(['/user-profile']);
 
           }
           else{

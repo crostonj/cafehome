@@ -1,0 +1,18 @@
+<div>
+<mat-toolbar color="primary">
+  <span>Welcome to Dan's Cafe</span>
+  <span class="fillspace"></span>
+  <span><mat-icon [mat-menu-trigger-for]="profilemenu">person</mat-icon></span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item>Option 1</button>
+  <button mat-menu-item>Option 2</button>
+</mat-menu>
+<mat-menu x-position="before" #profilemenu="matMenu">
+  <button mat-menu-item>login</button>
+  <button mat-menu-item>Settings</button>
+</mat-menu>
+</div>

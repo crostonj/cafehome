@@ -4,22 +4,12 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
  {
-  path: '',
-  redirectTo: 'dashboard',
-  pathMatch: 'full',
-},
-  {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
-  },
+  path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 

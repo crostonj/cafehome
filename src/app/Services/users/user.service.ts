@@ -4,6 +4,7 @@ import { UserRepsonse } from '../../models/user/userReponse';
 import { UserRequest } from '../../models/user/UserRequest';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
+import { Profile } from '../../models/user/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class UserService {
     this.userServiceUrl = 'http://localhost:8102/';
   }
 
+
   authenticate(username: string, password: string): Observable<UserRepsonse> {
     const authRequest = new UserRequest();
     authRequest.password = password;
@@ -32,6 +34,52 @@ export class UserService {
       this.httpOptions)
       .pipe(
         catchError(this.handleError<UserRepsonse>('Authenticate'))
+      );
+  }
+
+  register(username: string, password: string): Observable<UserRepsonse> {
+    const authRequest = new UserRequest();
+    authRequest.password = password;
+    authRequest.email = username;
+
+    return this.http.post<UserRepsonse>(
+      `${this.userServiceUrl}register`,
+      authRequest,
+      this.httpOptions)
+      .pipe(
+        catchError(this.handleError<UserRepsonse>('Register'))
+      );
+  }
+
+  updateProfile(profile: Profile): Observable<Profile>{
+    return this.http.patch<Profile>(
+        `${this.userServiceUrl}profile`,
+        profile,
+        this.httpOptions
+      )
+      .pipe(
+        catchError(this.handleError<Profile>('Profile'))
+      );
+  }
+
+   getProfile(username: string): Observable<Profile>{
+    return this.http.get<Profile>(
+        `${this.userServiceUrl}profile/${username}`,
+        this.httpOptions,
+
+      )
+      .pipe(
+        catchError(this.handleError<Profile>('Profile'))
+      );
+  }
+  createProfile(profile: Profile): Observable<Profile>{
+    return this.http.post<Profile>(
+        `${this.userServiceUrl}profile`,
+        profile,
+        this.httpOptions
+      )
+      .pipe(
+        catchError(this.handleError<Profile>('Profile'))
       );
   }
 
