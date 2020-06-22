@@ -1,3 +1,4 @@
+import { DefaultModule } from './layouts/default/default.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,23 +15,20 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSidenavModule} from '@angular/material/sidenav'
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LoginComponent } from './login/login.component';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
-import { HomeComponent } from './home/home.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    LoginComponent,
-    HomeComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     ComponentsModule,
+    DefaultModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
@@ -51,7 +50,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDialogModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule
   ],
   exports: [
     MatSidenavModule,

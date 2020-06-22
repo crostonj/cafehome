@@ -6,9 +6,9 @@ import {MatMenuModule} from '@angular/material/menu';
 
 
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   imports: [
@@ -20,13 +20,13 @@ import { HeaderComponent } from './header/header.component';
   ],
   declarations: [
     FooterComponent,
-    NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent
   ],
   exports: [
     FooterComponent,
-    NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent
   ]
 })
 export class ComponentsModule { }

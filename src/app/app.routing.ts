@@ -4,12 +4,23 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './modules/home/home.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
- {
-  path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
+  {path: '', component: DefaultComponent ,
+    children: [{
+      path: '',
+      component: DashboardComponent
+    },
+    {
+      path: 'home',
+      component: HomeComponent
+    }
+  ]},
+ // {path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: '**', component: PageNotFoundComponent }
 ];
 
