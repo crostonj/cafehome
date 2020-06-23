@@ -7,6 +7,7 @@ import { HomeComponent } from 'app/modules/home/home.component';
 import { ComponentsModule } from 'app/components/components.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -21,7 +22,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RouterModule,
     ComponentsModule,
     MatSidenavModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDividerModule
   ]
 })
 export class DefaultModule { }

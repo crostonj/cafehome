@@ -1,18 +1,36 @@
-<div>
 <mat-toolbar color="primary">
-  <span>Welcome to Dan's Cafe</span>
-  <span class="fillspace"></span>
-  <span><mat-icon [mat-menu-trigger-for]="profilemenu">person</mat-icon></span>
-  <button mat-icon-button [mat-menu-trigger-for]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
+  <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleSideBar()">
+          <mat-icon>menu</mat-icon>
+      </button>
+
+      <span> APP LOGO </span>
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+          <ul fxLayout="row" fxLayoutGap="20px">
+              <li>
+                  <button mat-icon-button>
+                      <mat-icon>settings</mat-icon>
+                  </button>
+              </li>
+              <li>
+                  <button mat-icon-button>
+                      <mat-icon>help_outline</mat-icon>
+                  </button>
+              </li>
+              <li>
+                  <button mat-button [matMenuTriggerFor]="menu">
+                      <mat-icon>person_outline</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                          <mat-icon>exit_to_app</mat-icon>
+                          Sign out
+                      </button>
+                  </mat-menu>
+
+              </li>
+          </ul>
+      </div>
+  </mat-toolbar-row>
 </mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item>Option 1</button>
-  <button mat-menu-item>Option 2</button>
-</mat-menu>
-<mat-menu x-position="before" #profilemenu="matMenu">
-  <button mat-menu-item>login</button>
-  <button mat-menu-item>Settings</button>
-</mat-menu>
-</div>

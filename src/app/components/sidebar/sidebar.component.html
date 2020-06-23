@@ -1,1 +1,27 @@
-<p>sidebar works!</p>
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2>Jeff Croston</h2>
+      <h4>crostonj@gmail.com</h4>
+    </div>
+    <img src="../../../assets/images/bitmoji.png" alt="Jeff Croston">
+  </div>
+  <mat-divider></mat-divider>
+  <h2 mat-subheader>Pages</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">Home</a>
+
+  <mat-divider></mat-divider>
+
+<h2 mat-subheader>Tools</h2>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+  <mat-icon>import_contacts</mat-icon>
+  Contact
+</a>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+  <mat-icon>contact_mail</mat-icon>
+  Mail
+</a>
+</mat-nav-list>
+

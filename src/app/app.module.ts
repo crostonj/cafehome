@@ -22,13 +22,15 @@ import { AuthenticationServiceService } from './Services/authentication-service.
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDividerModule
   ],
   exports: [
     MatSidenavModule,
