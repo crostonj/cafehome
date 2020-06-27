@@ -1,28 +1,16 @@
 import { DefaultModule } from './layouts/default/default.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Router } from '@angular/router';
-import { ComponentsModule } from './components/components.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatRippleModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSelectModule} from '@angular/material/select';
-import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './components/login/login.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDividerModule } from '@angular/material/divider';
 
 
 
@@ -30,34 +18,17 @@ import { MatDividerModule } from '@angular/material/divider';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    LoginComponent,
+    SettingsComponent,
 
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     RouterModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ComponentsModule,
     DefaultModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatDialogModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    FlexLayoutModule,
-    MatDividerModule
-  ],
-  exports: [
-    MatSidenavModule,
   ],
   providers: [
     AuthenticationServiceService

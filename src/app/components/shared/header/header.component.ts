@@ -9,7 +9,6 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -22,5 +21,9 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300);
+  }
+
+  isAuthenticated(): boolean {
+    return false;
   }
 }

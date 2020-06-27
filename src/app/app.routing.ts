@@ -3,25 +3,35 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './modules/home/home.component';
 import { DefaultComponent } from './layouts/default/default.component';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', component: DefaultComponent ,
     children: [{
       path: '',
-      component: DashboardComponent
+      component: HomeComponent
     },
     {
       path: 'home',
       component: HomeComponent
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent
     }
   ]},
- // {path: '', redirectTo: '/home', pathMatch: 'full' },
-
-  { path: '**', component: PageNotFoundComponent }
+  {
+      path: 'login',
+      component: LoginComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({
