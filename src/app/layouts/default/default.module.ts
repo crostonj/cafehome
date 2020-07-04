@@ -8,20 +8,35 @@ import { SharedModule } from 'app/components/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { SettingsComponent } from 'app/components/settings/settings.component';
+import { RegisterComponent } from 'app/components/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from 'app/components/login/login.component';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
     DefaultComponent,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule,
     RouterModule,
     MatSidenavModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class DefaultModule { }

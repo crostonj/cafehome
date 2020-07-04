@@ -11,24 +11,34 @@ import { LoginComponent } from './components/login/login.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent,
-    LoginComponent,
-    SettingsComponent,
-
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DefaultModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatCardModule,
+    FormsModule
   ],
   providers: [
     AuthenticationServiceService

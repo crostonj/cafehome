@@ -23,33 +23,6 @@ export class UserService {
   }
 
 
-  authenticate(username: string, password: string): Observable<UserRepsonse> {
-    const authRequest = new UserRequest();
-    authRequest.password = password;
-    authRequest.email = username;
-
-    return this.http.post<UserRepsonse>(
-      `${this.userServiceUrl}authenticate`,
-      authRequest,
-      this.httpOptions)
-      .pipe(
-        catchError(this.handleError<UserRepsonse>('Authenticate'))
-      );
-  }
-
-  register(username: string, password: string): Observable<UserRepsonse> {
-    const authRequest = new UserRequest();
-    authRequest.password = password;
-    authRequest.email = username;
-
-    return this.http.post<UserRepsonse>(
-      `${this.userServiceUrl}register`,
-      authRequest,
-      this.httpOptions)
-      .pipe(
-        catchError(this.handleError<UserRepsonse>('Register'))
-      );
-  }
 
   updateProfile(profile: Profile): Observable<Profile>{
     return this.http.patch<Profile>(

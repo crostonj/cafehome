@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="register-item">
+
+  <form #newUserForm="ngForm" class="form form-register" (ngSubmit)="onSubmit(newUserForm)">
+    <h3 class="color" id="num">Login form</h3>
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <div class="form-field">
+      <label class="lock" for="login-username"><span class="hidden">Username</span></label>
+      <input matInput type="text" id="login-username" [(ngModel)]="name" name="name" required #userName="ngModel" />
+      <mat-error *ngIf="userName.invalid && userName.touched">
+        <mat-error *ngIf="userName.errors?.required">
+          User name is required!
+        </mat-error>
+      </mat-error>
+    </div>
+    <div class="form-field">
+      <label class="lock" for="login-password"><span class="hidden">Username</span></label>
+      <input matInput id="login-password" type="password" placeholder="Password" required [(ngModel)]="password" name="password"
+        #userPassword="ngModel" [type]="hide ? 'password' : 'text'" autocomplete="on" />
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="!userPassword.valid && userPassword.touched">
+        Password is required!
+      </mat-error>
+    </div>
+    <div class="form-field">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!newUserForm.form.valid">Login</button>&nbsp;
+    </div>
+    <div class="form-field">
+      <button mat-raised-button color="primary" type="button" (click)="newUserForm.reset()">Reset</button>&nbsp;
+    </div>
+    <div class="form-field">
+      <button mat-raised-button color="primary" type="button" (click)="onRegister()"> Register</button>
+    </div>
+  </form>
+</div>

@@ -8,26 +8,32 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AuthenticationGuard } from './helpers/authentication.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {path: '', component: DefaultComponent ,
     children: [{
       path: '',
-      component: HomeComponent
+      component: HomeComponent, canActivate: [AuthenticationGuard]
     },
     {
       path: 'home',
-      component: HomeComponent
+      component: HomeComponent , canActivate: [AuthenticationGuard]
     },
     {
       path: 'settings',
-      component: SettingsComponent
-    }
-  ]},
-  {
+      component: SettingsComponent, canActivate: [AuthenticationGuard]
+    },
+    {
+      path: 'register',
+      component: RegisterComponent
+    },
+    {
       path: 'login',
       component: LoginComponent
-  },
+    },
+  ]},
   {
     path: '**',
     component: PageNotFoundComponent
