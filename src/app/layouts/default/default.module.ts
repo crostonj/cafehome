@@ -15,6 +15,7 @@ import { RegisterComponent } from 'app/components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from 'app/components/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDividerModule,
     MatFormFieldModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class DefaultModule { }

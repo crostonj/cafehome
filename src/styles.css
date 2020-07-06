@@ -1,11 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
 
 html {
   height: 100%;
@@ -36,6 +32,7 @@ html {
 }
 
 input {
+  width: 100%;
   border: 0;
   color: inherit;
   font: inherit;
@@ -58,9 +55,6 @@ input {
 	color: #5b5b5b;
 }
 
-.form input[type="password"], .form input[type="email"], .form input[type="submit"] {
-  width: 100%;
-}
 
 .form-register label,
 .form-register input[type="email"],
@@ -118,4 +112,20 @@ input {
 
 .text--center {
   text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
 }

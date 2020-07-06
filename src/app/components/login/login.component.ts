@@ -55,4 +55,9 @@ export class LoginComponent implements OnInit {
   onRegister(): void {
     this.router.navigateByUrl('/register');
   }
+
+  onReset(): void {
+    this.name = '';
+    this.password = '';
+  }
 }
