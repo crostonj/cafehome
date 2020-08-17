@@ -1,36 +1,38 @@
 <div class="register-item">
 
   <form #newUserForm="ngForm" class="form form-register">
-    <h3 class="color" id="num">Login form</h3>
     <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-    <div class="form-field">
-      <mat-form-field class="example-full-width" id="login-username" [(ngModel)]="name" name="name" required #userName="ngModel">
-        <mat-label>First name</mat-label>
-        <input matInput>
-      </mat-form-field>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label class="user"></mat-label>
+          <input matInput  placeholder="Username or email address">
+          <mat-hint>Username</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="column"></div>
+      </div>
 
-      <label class="lock" for="login-username"><span class="hidden">Username</span></label>
-      <input matInput type="text" id="login-username" [(ngModel)]="name" name="name" required #userName="ngModel" />
-      <mat-error *ngIf="userName.invalid && userName.touched">
-        <mat-error *ngIf="userName.errors?.required">
-          User name is required!
-        </mat-error>
-      </mat-error>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label class="lock" for="login-password"></mat-label>
+          <input matInput id="login-password" type="password" placeholder="Password" required [(ngModel)]="password"
+            name="password" #userPassword="ngModel" [type]="hide ? 'password' : 'text'" autocomplete="on" />
+
+          <mat-hint>Password</mat-hint>
+          <mat-error *ngIf="!userPassword.valid && userPassword.touched">Password is required!</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="column">
+        <button mat-flat-button class="passwordbutton" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide" color="primary">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="form-field">
-      <label class="lock" for="login-password"><span class="hidden">Username</span></label>
-      <input matInput id="login-password" type="password" placeholder="Password" required [(ngModel)]="password"
-        name="password" #userPassword="ngModel" [type]="hide ? 'password' : 'text'" autocomplete="on" />
-      <button mat-flat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-        color="primary">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <mat-error *ngIf="!userPassword.valid && userPassword.touched">
-        Password is required!
-      </mat-error>
-    </div>
+
     <div class="row">
       <div class="column">
         <div class="cmd-btn-row">

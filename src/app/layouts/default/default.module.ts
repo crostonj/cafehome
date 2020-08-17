@@ -12,10 +12,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { SettingsComponent } from 'app/components/settings/settings.component';
 import { RegisterComponent } from 'app/components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'app/components/login/login.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 
 @NgModule({
@@ -38,7 +40,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
 })
 export class DefaultModule { }

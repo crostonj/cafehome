@@ -1,22 +1,40 @@
 <div class="register-item">
-  <form #myform="ngForm" (ngSubmit)="onSubmit(myform)" class="form form-register">
-    <div class="form-field">
-      <label class="user" for="register-username"><span class="hidden">Name</span></label>
-      <input name="name" id="register-username" type="email" class="form-input" placeholder="Name" ngModel required>
-    </div>
-    <div class="form-field">
-      <label class="user" for="register-email"><span class="hidden">Email</span></label>
-      <input name="email" id="register-email" type="email" class="form-input" placeholder="Email" ngModel required>
+  <form class="form form-register">
+
+    <div class="row">
+      <div class="column">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="form-field">
-      <label class="lock" for="register-password"><span class="hidden">Password</span></label>
-      <input name="password" id="register-password" type="password" class="form-input" placeholder="Password" ngModel
-        required>
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label class="user"></mat-label>
+          <input matInput name="username"  placeholder="Username">
+          <mat-hint>Username</mat-hint>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="form-field">
-      <input type="submit" value="Register">
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label class="password"></mat-label>
+          <input matInput name="password" type="password" placeholder="password" ngModel required>
+          <mat-hint>Password</mat-hint>
+        </mat-form-field>
+      </div>
     </div>
   </form>
 </div>
