@@ -37,7 +37,7 @@
     "jquery": "3.5.1",
     "jwt-decode": "^2.2.0",
     "material-components-web": "^6.0.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "popper": "^1.0.1",
     "rxjs": "~6.5.4",
     "rxjs-compat": "6.5.2",
